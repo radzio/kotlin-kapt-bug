@@ -1,0 +1,40 @@
+apply plugin: 'idea'
+apply plugin: 'kotlin'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    kapt "com.google.auto.value:auto-value:1.2"
+    compileOnly "com.google.auto.value:auto-value:1.2"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+kapt {
+    generateStubs = true
+}
+
+//uncomment code below to fix issue
+//afterEvaluate {
+//    idea {
+//        module {
+//
+//            excludeDirs -= file("$buildDir")
+//            excludeDirs += file("$buildDir/classes")
+//            excludeDirs += file("$buildDir/libs")
+//            excludeDirs += file("$buildDir/reports")
+//            excludeDirs += file("$buildDir/retrolambda")
+//            excludeDirs += file("$buildDir/results")
+//            excludeDirs += file("$buildDir/test-results")
+//            excludeDirs += file("$buildDir/tmp")
+//
+//            sourceDirs += file("$buildDir/generated/source/kapt/main")
+//            testSourceDirs += file("$buildDir/generated/source/kapt/test")
+//            generatedSourceDirs += file("$buildDir/generated/source/kapt/test")
+//            generatedSourceDirs += file("$buildDir/generated/source/kapt/main")
+//        }
+//    }
+//
+//}
